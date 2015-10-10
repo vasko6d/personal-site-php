@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<title> cubert </title>
+<head>
+	<style>
+	body{
+	background-color: white;}
+	#graphicArea {
+	    margin-top: 5px;
+	    margin-bottom: 5px;
+	    margin-right: 20px;
+	    margin-left: 100px;
+	float:left;}
+	#cameraControls {
+	padding: 5px;
+	float:left;} 
+	#header {
+	    color:black;
+	    text-align:center;
+	    padding:5px;
+	}
+	</style>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+	attribute  vec4 vPosition;
+	
+	uniform mat4 modelView;
+	uniform mat4 projection;
+	
+	void main() 
+	{
+	    gl_Position = projection*modelView*vPosition;
+	} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+	precision mediump float;
+
+	uniform vec4 Color;
+
+	void
+	main()
+	{
+	    gl_FragColor = Color;
+	}
+</script>
+</head>
+
+<div id="header">
+	<h1>David Vasko - Homework 2: Working in 3D</h1>
+</div>
+
+<div id="graphicArea">
+<body>
+	<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+	<script type="text/javascript" src="../Common/initShaders.js"></script>
+	<script type="text/javascript" src="../Common/MV.js"></script>
+	<script type="text/javascript" src="cubert.js"></script>
+
+	<canvas id="gl-canvas" width="512" height="512">
+		Oops ... your browser doesn't support the HTML5 canvas element
+	</canvas>
+
+</body>
+</div>
+
+<div id="cameraControls">
+	<p><b> Camera Controls </b></p>
+	<p> up and down control the Altitude | left and right control the azimuth <br></br> 
+		i, j, l and k control forward, left, right and backwards respectively <br></br> 
+		--- u and o controll up and down respectively <br></br>
+		c changes the color of the cubes | x displays a crosshair <br></br> 
+		n and w control the field of view</p> <br></br>
+	<p><b> SPACE BAR reverts the view to its original state </b></p>
+<p id="test"> </p>
+</div>
+
+</html>

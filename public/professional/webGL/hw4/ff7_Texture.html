@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<title> Final Fantasy 7 </title>
+	<style>
+	body{
+	background-image: url("space.jpg");}
+	#graphicArea {
+	    margin-top: 5px;
+	    margin-bottom: 5px;
+	    margin-right: 20px;
+	    margin-left: 100px;
+		float:left;}
+	#cameraControls {
+	    color:black;
+		padding: 5px;
+		float:left;} 
+	#header {
+	    color:black;
+	    text-align:center;
+	    padding:5px;
+	}
+	</style>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute vec3 vPosition;
+attribute vec3 vNormal;
+attribute vec2 vUV;
+uniform mat4 viewMatrix;
+uniform mat4 modelMatrix;
+uniform mat4 pMatrix;
+uniform vec3 lightPosition;
+
+uniform float texScale;
+uniform mat2 texRotate;
+uniform float texTranslate;
+
+varying vec3 fL, fE, fN;
+varying vec2 fUV;
+
+void main() 
+{
+    vec3 pos = (viewMatrix * modelMatrix * vec4(vPosition, 1.0)).xyz;
+	vec3 light = (viewMatrix * vec4(lightPosition, 1.0)).xyz;
+    //light position in camera space
+
+    fL = normalize(light - pos); 
+    fE = normalize(-pos);
+    fN = normalize(viewMatrix * modelMatrix * vec4(vNormal, 0.0)).xyz; 
+
+    fUV = texRotate * (vUV - vec2(0.5,0.5)) * texScale + vec2(0.5, 0.5 + texTranslate*texScale); 
+    gl_Position = pMatrix * vec4(pos, 1.0);
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying vec3 fL, fE, fH, fN;
+varying vec2 fUV;
+
+uniform sampler2D uSampler;
+uniform float shininess;
+void main()
+{
+    vec3 fH = normalize(fL + fE);
+
+    vec4 texColor = texture2D(uSampler, fUV); 
+    vec4 ambient = 0.2 * texColor;
+    float kd = max(dot(fL, fN), 0.0);
+    vec4 diffuse = kd * 0.6 * texColor;
+
+    float ks = pow(max(dot(fN, fH), 0.0), shininess);
+    vec4 specular =  0.4*ks * vec4(1.0, 1.0, 1.0, 1.0);
+	if(dot(fN,fL) < 0.0){ specular = vec4(0.0,0.0,0.0,1.0);}
+
+    vec4 fColor = ambient + diffuse + specular;
+    fColor.a  = 1.0;
+
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/math.js"></script>
+<script type="text/javascript" src="ff7_Texture.js"></script>
+<script type="text/javascript" src="camerawork.js"></script>
+
+<div id="header">
+	<h1>David Vasko - Homework 4: Playing With Textures</h1>
+	<p id="test3"></p>
+</div>
+
+<div id="graphicArea">
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</div>   
+
+<div id="cameraControls">
+	<p><b> Viewer Controls </b></p>
+	<p> "up" and "down" control the Altitude | left and right control the azimuth <br></br> 
+		"i", "j", "l" and "k" control forward, left, right and backwards respectively <br></br> 
+		--- "u" and "o" controll up and down respectively <br></br>
+		"r" begins the rotation of both cubes <br></br>
+		"t" toggles the rotation of the texture on the right cube<br></br>
+		"s" toggles the scrolling of the texture on the left cube<br></br>
+		"n" and "w" control the field of view</p> <br></br>
+	<p><b> SPACE BAR reverts the view to its original state </b></p>
+</div>
+
+<p id="test")></p>
+</body>
+</html>

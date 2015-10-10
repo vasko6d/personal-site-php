@@ -1,0 +1,112 @@
+var theme = "Who is Sac? - David Vasko";
+
+var source = "JCBWD#KHLMZ#STVN";
+source +=    "ERROR#OOVOO#PASA";
+source +=    "CEASE#ORLON#ELKS";
+source +=    "TENTACLE#SEGEL##";
+source +=    "####MIA###RADONS";
+source +=    "IMPS#TIME##TOWEL";
+source +=    "PALL#EDITED##STY";
+source +=    "AREAS##NAVAL####";
+source +=    "DVDBCHSN#ENIGMA#";
+source +=    "####CUTIE#GLDBRG";
+source +=    "DSTN#GAEL#LOPATE";
+source +=    "EERIEST#DRE###SL";
+source +=    "TWANG#ICEE#SCALD";
+source +=    "AEIOU#CHRR#AURAE";
+source +=    "NTRN##EASE#MHMMD";
+
+var h = 15;
+var w = 16;
+
+var across = "ACROSS <br/> \
+1) This person might be traded in Catan <br/> \
+6) This person sounds like the object of hunting <br/> \
+11) With 77 across, This person thinks hes balding <br/> \
+15) syntax or logic, in coding <br/> \
+16) Palindromic Skype rival <br/> \
+17) Present conjugation of \"to happen\", to Juan <br/> \
+18) Fire starter? <br/> \
+19) classic acrylic material <br/> \
+20) 2 down called them waapiti <br/> \
+21) Flexible moveable elongated organ <br/> \
+23) He stared in \"The Muppets\" and \"Despicable Me\" (last name) <br/> \
+25) The two m'ed ham. <br/> \
+26) Many of an element from the far right of the periodic table.  <br/> \
+29) In some cultures they are considered the same as faeries <br/> \
+33) This might just last 10 hours <br/> \
+36) It draws moisture from direct contact <br/> \
+37) Coffin cloth <br/> \
+38) A photo or an essay may be this <br/> \
+41) Home to Leslie’s favorite animal.  <br/> \
+42) pi r squared and b squared <br/>\
+44) Not your belly button or an orange <br/> \
+46) Who OD is on the inside <br/> \
+49) Conundrum <br/> \
+53) A Clementine perhaps <br/> \
+55) see 57 across <br/> \
+57) With 55, This person used to be boring <br/> \
+61) Iona's mascot or someone of a particular Irish ancestry <br/> \
+62) Leonard ________.  Host of a New York public radio talk show named after himself. <br/> \
+63) Most otherworldly <br/> \
+65) Andre Romelle Young, on stage. <br/> \
+67) Online virtual world (briefly) <br/> \
+68) A strong ringing sound <br/> \
+69) This beverage would be very refreshing on a hot day <br/> \
+71) Burn <br/> \
+74) This will tell you what never made it in themed clues <br/> \
+75) see 79 across <br/> \
+76) Invisible emanations <br/> \
+77) see 7 across. <br/> \
+78) Move gently <br/> \
+79) with 75 across, This person always has beautiful ladies on his left and right."
+/*
+DOWN
+1)  Latin root which mean throw
+2) The people oppressed in Iron Maiden's, "Run to the hills"
+3) Hard outer layer of grain
+4) 2nd person present singular form of wit.
+5) It was only a pipe _____.
+6) This man may have debris in his dumb head. (hyph)
+7)  Prostitute (var.) or how a heavy accented Asian may regard a pit.
+8) The goal of gaining exp. 
+9) not oinks or bahs
+10) Someone who divides things into sections
+11) It only covers about 5 percent of your body
+12) Substances used historically to make candles.
+13) DVD _____.
+14) His debut album was Illmatic
+22)  What you do in a bibliography
+24) Mobsters piece
+27) "Nothing but _____"
+28) subtle
+29) Most recent models were Air 2 and Mini 3
+30) Thief from a Christmas movie
+31) Argued
+32) A portion or a type of climbing
+34) Actress in Tarzan and Good Will Hunting (first name)
+35) A temporal evaluation. (briefly)
+39) She was made from a rib
+40) Scott Barron’s real surname
+43) The highest tribunal of our northerly neighbor (Briefly)
+45) Boot loader that was replaced by GRUB
+47) o's
+48) Flowers from genus limonium. Also homophone of status.
+50) The USA currently has the highest in the world, followed by CHN
+51) degree designed to develop the skills required formanagement
+52) Where a bunch of painters may get together to showcase their talent. (2 wds)
+54) Some tree or people older than you
+56) A horse who is no longer a stallion is this
+57) A product that could make you whiter
+58) A system of pipes or one with needle and thread
+59) attribute
+60) A sheer fabric of silk
+64) what you might jokingly call a big bird in Australia who is very narcissistic
+66) The start of a subject perhaps
+70) This repeated three times is a famous dance
+71) Uncle _____.
+72) If the most conductive metal and the lightest element 
+formed a molecule.
+73) Most people have two of this.
+*/
+

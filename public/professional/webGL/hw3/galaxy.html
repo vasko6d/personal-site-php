@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<title> Galaxy </title>
+<head>
+
+	<style>
+	body{
+	background-image: url("space.jpg");}
+	#graphicArea {
+	    margin-top: 5px;
+	    margin-bottom: 5px;
+	    margin-right: 20px;
+	    margin-left: 100px;
+		float:left;}
+	#cameraControls {
+	    color:white;
+		padding: 5px;
+		float:left;} 
+	#header {
+	    color:white;
+	    text-align:center;
+	    padding:5px;
+	}
+	</style>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+precision mediump float;
+attribute vec4 vPosition, vNormal, flatNormal;
+
+varying vec3 N, L, E;
+varying vec4 fcolor;
+
+uniform mat4 viewMatrix, projectionMatrix, modelMatrix;
+uniform vec4 lightPosition;
+
+uniform float whichShading;
+
+uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+uniform float shininess;
+
+void main()
+{
+//i just took out viewMatrix from the following 2 lines
+    vec3 pos = (modelMatrix * vPosition).xyz;
+    vec3 light = (lightPosition).xyz;
+    L = normalize( light - pos );
+    E = -pos;
+
+//When I set up the normals arrays in sphere generation, i had the 4th 
+//component set to 1 instead of 0, so i have to correct that here
+//with my variable mknormal. What should have really been done to save space
+//was pass teh vec4s as vec3s and add the 4th component here in teh shader.
+//If i had more tiem i would fix that.
+	if(whichShading < 0.5){
+	vec3 mknormal = flatNormal.xyz;
+    N = normalize( (vec4(mknormal, 0)).xyz);}
+	else{
+	vec3 mknormal = vNormal.xyz;
+    N = normalize( (vec4(mknormal, 0.0)).xyz);}
+//----------------------------------------------------------------
+	
+    gl_Position =  projectionMatrix * viewMatrix * modelMatrix * vPosition;
+	
+	if(whichShading < 1.5){
+    vec3 H = normalize( L + E );
+    vec4 ambient = ambientProduct;
+
+    float Kd = max( dot(L, N), 0.0 );
+    vec4  diffuse = Kd*diffuseProduct;
+
+    float Ks = pow( max(dot(N, H), 0.0), shininess );
+    vec4  specular = Ks * specularProduct;
+    
+    if( dot(L, N) < 0.0 || shininess == 0.0) specular = vec4(0.0, 0.0, 0.0, 1.0);
+ 
+    fcolor = ambient + diffuse + specular;
+    fcolor.a = 1.0;
+	}
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+uniform float shininess;
+uniform float whichShading;
+varying vec3 N, L, E;
+
+varying vec4 fcolor;
+void main()
+{    
+    if(whichShading > 1.5){
+    vec4 FColor = fcolor;
+    vec3 H = normalize( L + E );
+    vec4 ambient = ambientProduct;
+
+    float Kd = max( dot(L, N), 0.0 );
+    vec4  diffuse = Kd*diffuseProduct;
+
+    float Ks = pow( max(dot(N, H), 0.0), shininess );
+    vec4  specular = Ks * specularProduct;
+    
+    if( dot(L, N) < 0.0 ) specular = vec4(0.0, 0.0, 0.0, 1.0);
+ 
+    FColor = ambient + diffuse + specular;
+    FColor.a = 1.0;
+
+    gl_FragColor = FColor;
+	}
+	else{
+	gl_FragColor = fcolor;}
+	
+}
+</script>
+</head>
+
+<div id="header">
+	<h1>David Vasko - Homework 3: Creating the Universe</h1>
+	<p id="test3"></p>
+</div>
+
+<div id="graphicArea">
+<body>
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="galaxy.js"></script>
+<script type="text/javascript" src="camerawork.js"></script>
+<script type="text/javascript" src="genPlanets.js"></script>
+
+
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</body>
+</div>
+
+<div id="cameraControls">
+	<p><b> Viewer Controls </b></p>
+	<p> "up" and "down" control the Altitude | left and right control the azimuth <br></br> 
+		"i", "j", "l" and "k" control forward, left, right and backwards respectively <br></br> 
+		--- "u" and "o" controll up and down respectively <br></br>
+		"t" moves the viewer to a top view <br></br>
+		"3" attaches/detaches the viewer to planet 3<br></br>
+		---when detaching it also brings you to the starting position <br></br>
+		"p" pauses the motion of the universe<br></br>
+		"n" and "w" control the field of view</p> <br></br>
+	<p><b> SPACE BAR reverts the view to its original state </b></p>
+<p id="test"> </p>
+<p id="test2"> </p>
+</div>
+
+
+</html>
