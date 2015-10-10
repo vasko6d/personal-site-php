@@ -1,0 +1,227 @@
+/*Need to find errors with videos */
+
+/*-----------------------Main Sheet Stuff--------------------------*/
+html, body {
+    margin: 0;
+    padding: 0;
+    background-image: URL("sample.jpg");
+
+}
+#top_bar{
+	text-align: left;
+	width: 100%;
+	color: #9DAD7F;
+	background-color: #333333;
+	border: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	margin:  5px 0px 5px 0px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+h2, h3{
+	color: #9DAD7F;
+	text-align: center;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+h4{
+	text-align: center;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+p{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+a{
+	color: #00FF00;
+}
+/*-----------------------First Nav Bar--------------------------*/
+#nav1_bar{
+	text-align: left;
+	color: #FFFFFF;
+	background-color: rgba(255, 255, 255, 0);
+	padding: 10px 0px;	
+	border: 0;
+	margin: 0% 12.5%;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	
+}
+.nav1{
+	text-align: left;
+	color: #FFFFFF;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #CCCCCC;
+	padding: 10px 0px;	
+	border: 0;
+	margin: 0;
+	
+}
+a.nav1{
+	color: #CCCCCC;
+	background-color: #333333;
+	text-decoration: none;
+	padding: 10px 5px;
+	border: 0;
+	margin: 0px 2px 0px 0px;
+
+}
+a.nav1:hover{
+	color: black;
+	background-color: #9DAD7F;
+	text-decoration: none;
+	padding: 10px 5px;	
+	border: 0;
+	margin: 0px 2px 0px 0px;
+}
+#cur_tab{
+	color: black;
+	background-color: #9DAD7F;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	text-decoration: none;
+	padding: 10px 5px;	
+	border: 0;
+	margin: 0px 2px 0px 0px;
+}
+
+/*-----------------------Second Nav Bar--------------------------*/
+.nav2{
+	text-align: left;
+	color: black;
+	background-color: #9DAD7F;
+	text-decoration: none;
+	padding: 5px 0px;	
+	border: 0;
+	margin: 0% 12.5%;
+	font-family: Tahoma, Geneva, sans-serif;
+	
+}
+.nav2 a{
+	color: #CCCCCC;
+	text-decoration: none;
+	padding: 5px 2.5px;
+
+}
+.nav2 a:hover{
+	color: black;
+	text-decoration: none;
+	padding: 5px 2.5px;	
+	border: 0;
+	margin: 0;
+}
+#cur_sub_tab{
+	color: black;
+	background-color: #9DAD7F;
+	text-decoration: none;
+	padding: 5px 2.5px;	
+	border: 0;
+	margin: 0;
+}
+
+
+
+/*-----------------------Page content--------------------------*/
+#wrapper{
+	float: left;
+	background-color: #333333;
+	width: 100%;
+
+}
+
+.main{
+	background-color: #333333;
+	margin: 0% 12.5%;
+	color: #CCCCCC;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+.graphic{
+	background-color: #333333;
+	border-style: none;
+	width: 47.75%;
+	height: 240px;
+	float: left;
+	margin: 5px;
+}
+
+/*----------------------Crossword COntent -----------------------*/
+table, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr{ height: 30px}
+td{width: 30px}
+.wb{
+	background-color: white;
+	color: black;
+	text-align: left;
+	vertical-align: top;
+	font-size: 40%;
+	top: 0;
+	}
+.yb{
+	background-color: #FFFFCC;
+	color: black;
+	text-align: left;
+	vertical-align: top;
+	font-size: 40%;
+	top: 0;
+	}
+.bb{
+	background-color: black;
+	}
+.icell{
+    	background-color: transparent;
+   	border: 0px solid;
+	width: 100%;
+	text-align: center;
+	}
+.icell2{
+	color: red;}
+
+#ACROSS{
+	float: left;
+	width:48%;
+	border-style: solid;
+	border-width: 1px;
+	margin: 0 1%;
+}
+#DOWN{
+	float: left;
+	width: 48%;
+	border-width: 1px;
+	border-style: solid;
+}
+
+#ACROSS2{
+	float: left;
+	width:48%;
+	min-height: 100px;
+	border-style: solid;
+	border-width: 1px;
+	margin: 0 1%;
+}
+#DOWN2{
+	float: left;
+	width: 48%;
+	min-height: 100px;
+	border-width: 1px;
+	border-style: solid;
+}
+/*-------------------------------------------------------------------------*/
+input {text-transform: uppercase;}
+input:focus, textarea {   
+    text-transform: uppercase;
+    background-color: #FFFFCC;}
+
+#check_button {
+	 color: red;
+	 float: right;
+	}
+
+#crossy_stuff{
+	width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+	}
